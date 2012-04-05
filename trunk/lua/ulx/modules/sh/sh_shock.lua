@@ -46,12 +46,12 @@ function ulx.shock( calling_ply , target_ply )
 			-- tes:Fire( "kill", "", 1 )
 
 			local dmginfo = DamageInfo()
-			dmginfo:SetDamage( pl:Health() )
+			dmginfo:SetDamage( 2147483647 )
 			dmginfo:SetDamageType( DMG_DISSOLVE )
 		
 			pl:TakeDamageInfo( dmginfo )
 		end
-	ulx.fancyLogAdmin( calling_ply, "#1s shocked #2s with OVER 9000 amps", target_ply, dmg , rad )
+	ulx.fancyLogAdmin( calling_ply, "#1s shocked #2s with OVER 9000 amps", target_ply )
 	return true
 end
 local shock = ulx.command( "Fun", "ulx shock", ulx.shock, "!shock" )
