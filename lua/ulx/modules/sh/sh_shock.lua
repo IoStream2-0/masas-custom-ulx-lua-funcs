@@ -43,6 +43,14 @@ function ulx.shock( calling_ply , target_plys )
 		-- tes:Fire( "DoSpark", "", 0.4 )
 		-- tes:Fire( "DoSpark", "", 0.6 )
 		-- tes:Fire( "kill", "", 1 )
+		
+		local Effect = EffectData()
+		
+		Effect:SetOrigin( pos )
+		Effect:SetStart( pos )
+		Effect:SetMagnitude( 512 )
+		Effect:SetScale( 128 )
+		util.Effect( "cball_explode" , Effect )
 
 		local dmginfo = DamageInfo()
 		dmginfo:SetDamage( 99999999 )
@@ -51,11 +59,12 @@ function ulx.shock( calling_ply , target_plys )
 		
 		v:TakeDamageInfo( dmginfo )
 	end
+	ulx.fancyLogAdmin( calling_ply, "#A shocked #T", affected_plys )
 	return true
 end
 local shock = ulx.command( "Fun", "ulx shock", ulx.shock, "!shock" )
 shock:addParam{ type = ULib.cmds.PlayersArg }
 shock:defaultAccess( ULib.ACCESS_SUPERADMIN )
 shock:help( "Shocks a player to death" )
-shock:logString( "#1s shocked #2s to death." )
+--shock:logString( "#1s shocked #2s to death." )
 ulx.addToMenu( ulx.ID_MCLIENT, "Shock", "ulx shock" )
