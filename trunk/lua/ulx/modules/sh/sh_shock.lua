@@ -1,6 +1,6 @@
 --Coded by Masamune EXCLUSIVLY for Mayor Qwerts build server
 --I will add effects eventualy
-function ulx.shock( calling_ply , target_plys )
+function ulx.shock( calling_ply , target_plys , dmg )
 	for _,v in ipairs( target_plys ) do
 		if not v:Alive() then
 				ULib.tsay( calling_ply, v:Nick() .. " is dead!", true )
@@ -53,17 +53,18 @@ function ulx.shock( calling_ply , target_plys )
 		util.Effect( "cball_explode" , Effect )
 
 		local dmginfo = DamageInfo()
-		dmginfo:SetDamage( v:Health() )
+		dmginfo:SetDamage( dmg )
 		dmginfo:SetDamageType( DMG_DISSOLVE )
 		--ULib.tsay( calling_ply, "test" , true )
 		
 		v:TakeDamageInfo( dmginfo )
 	end
-	ulx.fancyLogAdmin( calling_ply, "#A shocked #T", affected_plys )
+	ulx.fancyLogAdmin( calling_ply, "#1s shocked #2s with #3i damage.", affected_plys , dmg )
 	return true
 end
 local shock = ulx.command( "Fun", "ulx shock", ulx.shock, "!shock" )
 shock:addParam{ type = ULib.cmds.PlayersArg }
+zombify:addParam{ type = ULib.cmds.NumArg , hint="Damage", min=1 , default=21700000 , ULib.cmds.optional }
 shock:defaultAccess( ULib.ACCESS_SUPERADMIN )
 shock:help( "Shocks a player to death" )
 --shock:logString( "#1s shocked #2s to death." )
