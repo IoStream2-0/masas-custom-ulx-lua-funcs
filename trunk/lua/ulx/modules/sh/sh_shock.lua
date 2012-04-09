@@ -64,8 +64,8 @@ function ulx.shock( calling_ply , target_plys , dmg )
 end
 local shock = ulx.command( "Fun", "ulx shock", ulx.shock, "!shock" )
 shock:addParam{ type = ULib.cmds.PlayersArg }
-zombify:addParam{ type = ULib.cmds.NumArg , hint="Damage", min=1 , default=21700000 , ULib.cmds.optional }
+shock:addParam{ type = ULib.cmds.NumArg , hint="Damage", min=0 , max=2147483647 , default=2147483647 , ULib.cmds.optional }
 shock:defaultAccess( ULib.ACCESS_SUPERADMIN )
-shock:help( "Shocks a player to death" )
+shock:help( "Shocks a player with damage." )
 --shock:logString( "#1s shocked #2s to death." )
 ulx.addToMenu( ulx.ID_MCLIENT, "Shock", "ulx shock" )
