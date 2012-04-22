@@ -1,5 +1,4 @@
---Coded by Masamune EXCLUSIVLY for Mayor Qwerts build server
---I will add effects eventualy
+--Coded by Masamune
 function ulx.shock( calling_ply , target_plys , dmg )
 	for _,v in ipairs( target_plys ) do
 		if not v:Alive() then
@@ -15,10 +14,6 @@ function ulx.shock( calling_ply , target_plys , dmg )
 				return
 			end	
 	
-			-- if v:InVehicle() then
-				-- v:ExitVehicle()
-			-- end
-		
 		local pos = v:GetPos()
 		
 		WorldSound("ambient/levels/labs/electric_explosion"..math.random(2,4)..".wav", pos , 95, math.random( 95 , 105 ) )
@@ -55,7 +50,6 @@ function ulx.shock( calling_ply , target_plys , dmg )
 		local dmginfo = DamageInfo()
 		dmginfo:SetDamage( dmg )
 		dmginfo:SetDamageType( DMG_DISSOLVE )
-		--ULib.tsay( calling_ply, "test" , true )
 		v:GodDisable()
 		v:TakeDamageInfo( dmginfo )
 	end
@@ -67,5 +61,4 @@ shock:addParam{ type = ULib.cmds.PlayersArg }
 shock:addParam{ type = ULib.cmds.NumArg , hint="Damage", min=0 , max=2147483647 , default=2147483647 , ULib.cmds.optional }
 shock:defaultAccess( ULib.ACCESS_SUPERADMIN )
 shock:help( "Shocks a player with damage." )
---shock:logString( "#1s shocked #2s to death." )
 ulx.addToMenu( ulx.ID_MCLIENT, "Shock", "ulx shock" )
