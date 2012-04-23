@@ -46,6 +46,7 @@ function ulx.shock( calling_ply , target_plys , dmg )
 		Effect:SetMagnitude( 512 )
 		Effect:SetScale( 128 )
 		util.Effect( "cball_explode" , Effect )
+		util.ScreenShake( pos , 5 , 5 , 1.5 , 100 )
 
 		local dmginfo = DamageInfo()
 		dmginfo:SetDamage( dmg )
