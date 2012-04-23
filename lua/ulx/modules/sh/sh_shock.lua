@@ -2,21 +2,21 @@
 function ulx.shock( calling_ply , target_plys , dmg )
 	for _,v in ipairs( target_plys ) do
 		if not v:Alive() then
-				ULib.tsay( calling_ply, v:Nick() .. " is dead!", true )
+				ULib.tsay( calling_ply, v:Nick() .. " is dead!" , true )
 				return
 			end
 			if v.jail then
-				ULib.tsay( calling_ply, v:Nick() .. " is in jail", true )
+				ULib.tsay( calling_ply, v:Nick() .. " is in jail" , true )
 				return
 			end
 			if v.ragdoll then
-				ULib.tsay( calling_ply, v:Nick() .. " is a ragdoll", true )
+				ULib.tsay( calling_ply, v:Nick() .. " is a ragdoll" , true )
 				return
 			end	
 	
 		local pos = v:GetPos()
 		
-		WorldSound("ambient/levels/labs/electric_explosion"..math.random(2,4)..".wav", pos , 95, math.random( 95 , 105 ) )
+		WorldSound( "ambient/levels/labs/electric_explosion"..math.random( 2 , 4 )..".wav" , pos , 95 , math.random( 95 , 105 ) )
 			
 		local tes = ents.Create( "point_tesla" )
 		tes:SetPos( v:GetShootPos() )
@@ -54,11 +54,11 @@ function ulx.shock( calling_ply , target_plys , dmg )
 		v:TakeDamageInfo( dmginfo )
 	end
 	ulx.fancyLogAdmin( calling_ply, "#1s shocked #2s with #3i damage.", affected_plys , dmg )
-	return true
+	--return true
 end
 local shock = ulx.command( "Fun", "ulx shock", ulx.shock, "!shock" )
 shock:addParam{ type = ULib.cmds.PlayersArg }
 shock:addParam{ type = ULib.cmds.NumArg , hint="Damage", min=0 , max=2147483647 , default=2147483647 , ULib.cmds.optional }
 shock:defaultAccess( ULib.ACCESS_SUPERADMIN )
 shock:help( "Shocks a player with damage." )
-ulx.addToMenu( ulx.ID_MCLIENT, "Shock", "ulx shock" )
+--ulx.addToMenu( ulx.ID_MCLIENT, "Shock", "ulx shock" )
