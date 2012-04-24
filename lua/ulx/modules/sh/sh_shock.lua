@@ -2,15 +2,15 @@
 function ulx.shock( calling_ply , target_plys , dmg )
 	for _,v in ipairs( target_plys ) do
 		if not v:Alive() then
-				ULib.tsay( calling_ply, v:Nick() .. " is dead!" , true )
+				ULib.tsayerror( calling_ply, v:Nick() .. " is dead!" )
 				return
 			end
 			if v.jail then
-				ULib.tsay( calling_ply, v:Nick() .. " is in jail" , true )
+				ULib.tsayerror( calling_ply, v:Nick() .. " is in jail!" )
 				return
 			end
 			if v.ragdoll then
-				ULib.tsay( calling_ply, v:Nick() .. " is a ragdoll" , true )
+				ULib.tsayerror( calling_ply, v:Nick() .. " is a ragdoll!" )
 				return
 			end	
 	
