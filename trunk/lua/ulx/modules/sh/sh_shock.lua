@@ -54,7 +54,7 @@ function ulx.shock( calling_ply , target_plys , dmg )
 		v:GodDisable()
 		v:TakeDamageInfo( dmginfo )
 	end
-	ulx.fancyLogAdmin( calling_ply, "#1s shocked #2s with #3i damage.", affected_plys , dmg )
+	ulx.fancyLogAdmin( calling_ply, "#A shocked #T with #i damage", affected_plys, dmg )
 	--return true
 end
 local shock = ulx.command( "Fun", "ulx shock", ulx.shock, "!shock" )
